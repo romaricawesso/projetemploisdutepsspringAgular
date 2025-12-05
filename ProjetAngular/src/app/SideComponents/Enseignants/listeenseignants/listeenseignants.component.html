@@ -1,0 +1,52 @@
+<app-navbar [title]="'Enseignants'"></app-navbar>
+<div class="mt-4">
+  <div class="container d-flex justify-content-start align-content-start">
+    <form class="d-none d-sm-inline-block form-inline mw-100 navbar-search" style="margin-right: 2rem">
+      <div class="input-group">
+        <input type="text" class="form-control bg-light border-0 small blue-border" [(ngModel)]="recherche" placeholder="Rechercher..."
+               aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div  class="container d-flex justify-content-end mt-4 align-content-end">
+    <button (click)="ajouterEnseignant()" class="btn btn-success  mb-4">Ajouter +</button>
+  </div>
+
+
+  <h1 class="text-center m-2">Liste des enseignants</h1>
+
+</div>
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">N° téléphone</th>
+      <th scope="col">Matricule</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let enseignant of listeEnseignants">
+        <td>{{ enseignant.nom }}</td>
+        <td>{{ enseignant.prenom }}</td>
+        <td>{{ enseignant.telephone }}</td>
+        <td>{{ enseignant.email }}</td>
+        <td>{{ enseignant.numeromatricule }}</td>
+        <td>
+          <a class="btn btn-warning mx-2" (click)="modifierEnseignant(enseignant.id.toString())">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+          <a class="btn btn-danger" (click)="supprimerEnseignant(enseignant)">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </td>
+    </tr>
+  </tbody>
+</table>

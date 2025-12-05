@@ -1,0 +1,47 @@
+<app-navbar [title]="'Matieres'"></app-navbar>
+<div class="mt-4">
+  <div class="mt-4">
+    <div class="container d-flex justify-content-start align-content-start">
+      <form class="d-none d-sm-inline-block form-inline mw-100 navbar-search" style="margin-right: 2rem">
+        <div class="input-group">
+          <input type="text" class="form-control bg-light border-0 small blue-border" [(ngModel)]="recherche" placeholder="Rechercher..."
+                 aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+      <div  class="container d-flex justify-content-end mt-4 align-content-end">
+        <button (click)="ajouterMatieres()" class="btn btn-success mb-4">Ajouter +</button>
+      </div>
+    <h1 class="text-center m-2">Liste des Matiéres</h1>
+  </div>
+</div>
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+          <th scope="col">Intitulé</th>
+          <th scope="col">Code</th>
+          <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let matiere of listeMatieres">
+          <td>{{ matiere.intitule }}</td>
+          <td>{{ matiere.code }}</td>
+          <td>
+            <a (click)="modifierMatieres(matiere.id.toString())">
+              <i class="fa-solid fa-pen-to-square text-warning"></i>
+            </a>
+
+            <a class="m-4" (click)="supprimerMatiere(matiere)">
+              <i class="fa-solid fa-trash text-danger"></i>
+            </a>
+        </td>
+      </tr>
+    </tbody>
+</table>
+

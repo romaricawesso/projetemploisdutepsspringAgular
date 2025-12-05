@@ -1,0 +1,33 @@
+<app-navbar [title]="'Année Scolaire'"></app-navbar>
+<div class="mt-4">
+  <h3 class="text-center m-2">Ajouter une Année Scolaire</h3>
+</div>
+  <form class="mt-4"  #ajouterAnneeScolaire="ngForm" (ngSubmit)="onSubmit()" >
+
+    <div class="row mb-4">
+      <div class="col">
+        <div data-mdb-input-init class="form-outline">
+          <label class="form-label" for="code">Code</label>
+          <input type="text" class="form-control" [(ngModel)]="anneeScolaire.code" id="code" name="code" required/>
+        </div>
+      </div>
+      <div class="col">
+        <div data-mdb-input-init class="form-outline">
+          <label class="form-label" for="datedebut">Date de Début</label>
+          <input type="date" class="form-control" [(ngModel)]="anneeScolaire.datededebut" id="dateDebut" name="dateDebut" required/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col">
+        <div data-mdb-input-init class="form-outline">
+          <label class="form-label" for="datefin">Date de Fin</label>
+          <input type="date" class="form-control"[(ngModel)]="anneeScolaire.datedefin" id="dateFin" name="dateFin" required/>
+        </div>
+      </div>
+    </div>
+    <!-- Submit button -->
+    <button data-mdb-ripple-init type="submit" [disabled]="!ajouterAnneeScolaire.form.valid" class="btn btn-primary btn-block mb-4">Enregistrer</button>
+  </form>
+

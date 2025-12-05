@@ -1,0 +1,45 @@
+<app-navbar [title]="'Cours'"></app-navbar>
+<div class="mt-4">
+  <h3 class="text-center m-2">Ajouter un Cours</h3>
+</div>
+<form #ajouterCours="ngForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group mt-2">
+    <label class="form-label" for="matiere">Matière</label>
+    <select id="matiere" name="matiere" class="form-control" [(ngModel)]="matiere_id" required>
+      <option *ngFor="let matiere of matieres" [value]="matiere.id">{{matiere.intitule}}</option>
+    </select>
+  </div>
+
+  <div class="form-group mt-2">
+    <label class="form-label" for="enseignant">Enseignant</label>
+    <select id="enseignant" name="enseignant" class="form-control" [(ngModel)]="enseignant_id" required>
+      <option *ngFor="let enseignant of enseignants" [value]="enseignant.id">{{enseignant.prenom + " " +enseignant.nom}}</option>
+    </select>
+  </div>
+
+  <div class="row mb-4">
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="classe">Classe</label>
+        <select id="classe" name="classe" class="form-control" [(ngModel)]="classe_id" required>
+          <option *ngFor="let classe of classes" [value]="classe.id">{{classe.intitule}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="annee">Année scolaire</label>
+        <select id="annee" name="annee" class="form-control" [(ngModel)]="annee_scolaire_id" required>
+          <option *ngFor="let anneescolaire of anneesScolaires" [value]="anneescolaire.id">{{anneescolaire.datededebut + " à " + anneescolaire.datedefin}}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-success btn-block" [disabled]="!ajouterCours.form.valid">Enregistrer</button>
+
+</form>

@@ -1,0 +1,30 @@
+<app-navbar [title]="'Année Scolaire'"></app-navbar>
+<div class="mt-4">
+  <button (click)="ajouterAnnee()" class="btn btn-success mb-4">Ajouter +</button>
+  <h3 class="text-center m-2">Liste des Années Scolaire </h3>
+</div>
+<table class="table table-striped mt-4">
+  <thead>
+  <tr>
+    <th scope="col">Code</th>
+    <th scope="col">Date de debut</th>
+    <th scope="col">Date de Fin</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let anneeScolaire of listeAnneesScolaires">
+        <td>{{anneeScolaire.code}}</td>
+        <td>{{anneeScolaire.datedefin}}</td>
+        <td>{{anneeScolaire.datedefin}}</td>
+        <td>
+          <a class="btn btn-warning mx-2" (click)="modifierAnneeScolaire(anneeScolaire.id.toString())">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+          <a class="btn btn-danger" (click)="supprimerAnneeScolaire(anneeScolaire)">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+  </tbody>
+</table>

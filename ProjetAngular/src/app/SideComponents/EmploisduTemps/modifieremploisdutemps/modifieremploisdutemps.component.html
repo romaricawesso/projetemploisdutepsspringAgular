@@ -1,0 +1,50 @@
+<app-navbar [title]="'Emplois du Temps'"></app-navbar>
+<div class="container-fluid">
+  <hr>
+  <h3 class="m-2 text-center">Modifier les informations d'un emploi du temps</h3>
+  <hr>
+  <form #ajouterEmploiDuTemps="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="enseignant">Enseignant</label>
+          <select id="enseignant" name="enseignant" class="form-control" [(ngModel)]="emploiDuTemps.enseignant.id" required>
+            <option *ngFor="let enseignant of liste_enseignants" [value]="enseignant.id">{{enseignant.nom + " " + enseignant.prenom}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="cours">Cours</label>
+          <select id="cours" name="cours" class="form-control" [(ngModel)]="emploiDuTemps.cours.id" required>
+            <option *ngFor="let cours of liste_cours" [value]="cours.id">{{cours.matiere.intitule}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="debut">Heure début</label>
+          <input type="time" id="debut" name="debut" class="form-control" [(ngModel)]="emploiDuTemps.heureDebut"/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="fin">Heure fin</label>
+          <input type="time" id="fin" name="fin" class="form-control" [(ngModel)]="emploiDuTemps.heureFin"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="form-label" for="salle">Salle de cours</label>
+      <select id="salle" name="salle" class="form-control" [(ngModel)]="emploiDuTemps.classe.id" required>
+        <option *ngFor="let classe of liste_classes" [value]="classe.id">{{classe.intitule}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block" [disabled]="!ajouterEmploiDuTemps.form.valid">Modifier</button>
+  </form>
+</div>

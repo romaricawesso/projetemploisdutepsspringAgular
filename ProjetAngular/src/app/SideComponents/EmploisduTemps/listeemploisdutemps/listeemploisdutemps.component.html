@@ -1,0 +1,31 @@
+<app-navbar [title]="'Emplois du Temps'"></app-navbar>
+<div class="mt-4">
+<div class="container d-flex justify-content-start align-content-start">
+  <button (click)="ajouterEmploiDuTemps()" class="btn btn-success mb-4">Ajouter +</button>
+</div>
+</div>
+<h1 class="text-center m-2">Liste des emplois du temps </h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" *ngFor="let emploiDuTemps of listeEmploiDuTemps">
+      <div class="card mt-2">
+        <div class="card-body">
+          <p class="card-text">Enseignant : {{emploiDuTemps.enseignant.nom + " " + emploiDuTemps.enseignant.prenom}}</p>
+          <p class="card-text">Cours : {{emploiDuTemps.cours.matiere.intitule}}</p>
+          <p class="card-text">Heure début : {{emploiDuTemps.heureDebut}}</p>
+          <p class="card-text">Heure fin : {{emploiDuTemps.heureFin}}</p>
+          <p class="card-text">Salle de cours : {{emploiDuTemps.classe.intitule}}</p>
+          <div class="container-fluid">
+            <a class="btn btn-warning mx-2" (click)="modifierEmploiDuTemps(emploiDuTemps.id.toString())">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+            <a class="btn btn-danger" (click)="supprimerEmploiDuTemps(emploiDuTemps)">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

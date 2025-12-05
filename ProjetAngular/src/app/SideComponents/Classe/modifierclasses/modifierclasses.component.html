@@ -1,0 +1,24 @@
+<app-navbar [title]="'Classe'"></app-navbar>
+<div class="mt-4">
+  <h3 class="text-center m-2">Modifier une classe </h3>
+</div>
+<form class="mt-4" #modifierClasse="ngForm" (ngSubmit)="onSubmit()" >
+
+  <div class="row mb-4">
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="intitule" >Intitulé</label>
+        <input type="text" id="intitule" class="form-control" [(ngModel)]="classe.intitule" name="intitule" required>
+      </div>
+    </div>
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="code">Code</label>
+        <input type="text" id="code" class="form-control" [(ngModel)]="classe.code" name="code" required>
+      </div>
+    </div>
+  </div>
+  <!-- Submit button -->
+  <button data-mdb-ripple-init [disabled]="!modifierClasse.form.valid" type="submit" class="btn btn-primary btn-block mb-4">Enregistrer</button>
+</form>
+

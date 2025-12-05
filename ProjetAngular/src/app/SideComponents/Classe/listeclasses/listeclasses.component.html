@@ -1,0 +1,28 @@
+<app-navbar [title]="'Classe'"></app-navbar>
+<div class="mt-4">
+  <a class="btn btn-success text-white" (click)="ajouterClasse()">Ajouter +</a>
+  <h3 class="text-center m-2">Liste des classes</h3>
+</div>
+<table class="table table-striped mt-4">
+  <thead>
+  <tr>
+    <th scope="col">Intitulé</th>
+    <th scope="col">Code</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let classe of listeClasses">
+      <td>{{classe.intitule}}</td>
+      <td>{{classe.code}}</td>
+      <td>
+        <a class="btn btn-warning mx-2" (click)="modifierClasse(classe.id.toString())">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+        <a class="btn btn-danger" (click)="supprimerClasse(classe)">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
